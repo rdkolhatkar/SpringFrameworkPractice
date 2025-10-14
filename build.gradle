@@ -1,0 +1,23 @@
+plugins {
+    id 'java'
+}
+
+group = 'org.ratnakar.practice'
+version = '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    // Spring Framework Dependencies
+    implementation("org.springframework:spring-context:6.2.11") // Spring Core Dependency
+
+    // Unit Testing Dependencies
+    testImplementation platform('org.junit:junit-bom:5.9.1')
+    testImplementation 'org.junit.jupiter:junit-jupiter'
+}
+
+test {
+    useJUnitPlatform()
+}

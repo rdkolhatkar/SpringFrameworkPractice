@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+This is the XML declaration.
+It tells the parser that this is an XML file, following version 1.0 of XML specification,
+and that the character encoding used inside is UTF-8.
+-->
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="
+        http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd">
+    <!--
+    The <beans> root element defines a Spring ApplicationContext configuration file.
+    Attributes explained:
+
+    1. xmlns="http://www.springframework.org/schema/beans"
+       - Declares the XML namespace for Spring beans configuration.
+       - Any tag inside <beans> without prefix (like <bean>) comes from this namespace.
+
+    2. xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       - Enables XML Schema validation features (from W3C standard).
+       - Required to associate XML elements with XSD schemas.
+
+    3. xsi:schemaLocation
+       - Maps the namespace URI to its actual schema definition file (XSD).
+       - "http://www.springframework.org/schema/beans" → namespace
+       - "http://www.springframework.org/schema/beans/spring-beans.xsd" → actual XSD file that Spring uses to validate bean configuration.
+    -->
+
+    <bean id="alien" class="com.spring.framework.model.Alien"> <!-- Create the object of Alien class with id as "alien" -->
+    </bean>
+    <bean id="entity" class="com.spring.framework.model.Alien"> <!-- Create new object of Alien class with id as "entity" -->
+    </bean>
+    <!-- If we create the object of same class with two different  -->
+    <bean id="device" class="com.spring.framework.model.Laptop">
+    </bean>
+    <!--
+    <bean> tag tells Spring to create and manage a Java object (called a Spring Bean).
+
+    Attributes:
+    - id="alien"
+        -> This is the unique identifier (name) of the bean inside the Spring container.
+           You will use this ID when retrieving the bean (e.g., context.getBean("alien")).
+
+    - class="com.spring.framework.model.Alien"
+        -> Fully Qualified Class Name (FQCN) of the Java class Spring will instantiate.
+           In this case, it's com.spring.framework.model.Alien (Alien.java inside that package).
+
+    Body:
+    - Currently empty, but you could configure properties or dependencies here using <property> tags.
+      Example:
+        <property name="age" value="25"/>
+        <property name="laptop" ref="laptopBean"/>
+    -->
+
+</beans>
+        <!--
+        Closing </beans> marks the end of Spring's bean configuration.
+        -->
