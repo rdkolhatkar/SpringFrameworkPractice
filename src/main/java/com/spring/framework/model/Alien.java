@@ -1,6 +1,7 @@
 package com.spring.framework.model;
 
 public class Alien {
+    public int age;
     public Alien() {
         System.out.println("Alien Object created ......");
     }
