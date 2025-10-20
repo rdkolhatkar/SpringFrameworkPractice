@@ -34,5 +34,10 @@ public class Application {
         laptopTwo.price = 200;
         laptopTwo.machine();
         System.out.println(laptopTwo.price);
+        // Setter Injection in the Spring Framework is a type of Dependency Injection (DI) where Spring injects dependencies into a bean using its setter methods after the bean is created.
+        // In Setter Injection, Spring first calls the no-argument constructor (or uses default instantiation) to create the bean, and then it calls the setter methods to inject the required dependencies.
+        Alien alienEntity = (Alien) context.getBean("entity");
+        System.out.println("Alien Entity Duration is "+alienEntity.getDuration());
     }
+
 }

@@ -32,7 +32,10 @@ and that the character encoding used inside is UTF-8.
          It ensures multiple independent bean instances, unlike the default singleton scope which returns the same instance each time. -->
     <bean id="alien" class="com.spring.framework.model.Alien" scope="prototype"> <!-- Create the object of Alien class with id as "alien" -->
     </bean>
+    <!-- Setter Injection in the spring framework-->
     <bean id="entity" class="com.spring.framework.model.Alien"> <!-- Create new object of Alien class with id as "entity" -->
+        <property name="duration" value="21">
+        </property>
     </bean>
     <!-- If we create the object of same class with two different  -->
     <bean id="device" class="com.spring.framework.model.Laptop">
