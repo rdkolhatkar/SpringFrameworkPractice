@@ -10,4 +10,8 @@ public class Laptop {
     public void machine(){
         System.out.println("Laptop is a Machine");
     }
+
+    public void compile(){
+        System.out.println("Compiling >>>>>>>>>>>>>>>>>>");
+    }
 }

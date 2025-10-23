@@ -31,11 +31,21 @@ and that the character encoding used inside is UTF-8.
     <!-- In Spring context XML, the scope="prototype" attribute specifies that a new object (bean instance) will be created every time the bean is requested from the Spring container.
          It ensures multiple independent bean instances, unlike the default singleton scope which returns the same instance each time. -->
     <bean id="alien" class="com.spring.framework.model.Alien" scope="prototype"> <!-- Create the object of Alien class with id as "alien" -->
+        <property name="duration" value="21"/>
+        <property name="laptop" ref="device"/> <!-- We already have a bean created for "Laptop.class" whose ID value is "device" we are linking that bean as a reference with property called as ref-->
+        <constructor-arg ref="device"/>         <!-- Passing values inside the Constructor - 1st parameter: Laptop -->
+        <constructor-arg value="21"/>           <!-- Passing values inside the Constructor - 2nd parameter: timevalue -->
+        <constructor-arg value="42"/>           <!-- Passing values inside the Constructor - 3rd parameter: timeScale -->
     </bean>
     <!-- Setter Injection in the spring framework-->
     <bean id="entity" class="com.spring.framework.model.Alien"> <!-- Create new object of Alien class with id as "entity" -->
-        <property name="duration" value="21">
-        </property>
+        <property name="duration" value="21"/>
+        <property name="laptop" ref="device"/> <!-- We already have a bean created for "Laptop.class" whose ID value is "device" we are linking that bean as a reference with property called as ref-->
+        <!-- order in which you have defined the constructor signature should match with the Sequence of constructor-args mentioned in the SpringApplicationContext.xml or you have to define the "type=<Variable type of constructor signature>"-->
+        <!-- if you have two constructor variables with same data type then you have to specify the index number of constructor signature -->
+        <constructor-arg type="int" index="1" value="21"/>           <!-- 2nd parameter: timevalue -->
+        <constructor-arg type="int" index="2" value="42"/>           <!-- 3rd parameter: timeScale -->
+        <constructor-arg type="com.spring.framework.model.Laptop" ref="device"/>         <!-- 1st parameter: Laptop -->
     </bean>
     <!-- If we create the object of same class with two different  -->
     <bean id="device" class="com.spring.framework.model.Laptop">
