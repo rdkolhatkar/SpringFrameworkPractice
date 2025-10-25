@@ -1,6 +1,6 @@
 package com.spring.framework.model;
 
-public class Laptop {
+public class Laptop implements Computer {
 
     public int price;
     public Laptop() {
@@ -11,7 +11,8 @@ public class Laptop {
         System.out.println("Laptop is a Machine");
     }
 
+    @Override
     public void compile(){
-        System.out.println("Compiling >>>>>>>>>>>>>>>>>>");
+        System.out.println("Compiling using Laptop >>>>>>>>>>>>>>>>>>");
     }
 }

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+This is the XML declaration.
+It tells the parser that this is an XML file, following version 1.0 of XML specification,
+and that the character encoding used inside is UTF-8.
+-->
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="
+        http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+<!--    <bean id="developer" class="com.spring.framework.model.Developer" autowire="byName">-->
+<!--        <constructor-arg name="age" value="27"/>-->
+<!--        <constructor-arg name="duration" value="60"/>-->
+<!--        <constructor-arg name="computer" ref="desktop"/>-->
+<!--        <constructor-arg name="timevalue" value="21"/>-->
+<!--        <constructor-arg name="timeScale" value="42"/>-->
+<!--    </bean>-->
+
+<!--    <bean id="developer" class="com.spring.framework.model.Developer">-->
+<!--        <property name="age" value="27"/>-->
+<!--        <property name="duration" value="60"/>-->
+<!--        <property name="computer" ref="laptop"/> &lt;!&ndash; As Computer is an interface and Laptop class Implements the Computer Interface, So we can use it as reference argument &ndash;&gt;-->
+<!--        <property name="timevalue" value="21"/>-->
+<!--        <property name="timeScale" value="42"/>-->
+<!--    </bean>-->
+
+    <!-- As we have given {autowire="byName"} in our bean definition Spring will automatically search the bean with id similar as that of the name of Variable Declaration in our Developer class
+    Here in our case it is [private Computer computer;] and bean id is also (<bean id="computer" class="com.spring.framework.model.Laptop"/>) -->
+    <!-- If we have mentioned the property specifically like {<property name="computer" ref="desktop"/>} then spring will prioritize the property instead of autowire="byName" -->
+    <bean id="developer" class="com.spring.framework.model.Developer" autowire="byName">
+        <property name="age" value="27"/>
+        <property name="duration" value="60"/>
+        <property name="timevalue" value="21"/>
+        <property name="timeScale" value="42"/>
+    </bean>
+
+    <!-- We can also use the autowire="byType" this will search for the bean return type object in our case if we comment the Desktop bean {<bean id="desktop" class="com.spring.framework.model.Desktop"/>} then as Laptop is implementing Computer, it will by default pick the Laptop class for autowire -->
+<!--    <bean id="developer" class="com.spring.framework.model.Developer" autowire="byType">-->
+<!--        <property name="age" value="27"/>-->
+<!--        <property name="duration" value="60"/>-->
+<!--        <property name="timevalue" value="21"/>-->
+<!--        <property name="timeScale" value="42"/>-->
+<!--    </bean>-->
+
+    <bean id="desktop" class="com.spring.framework.model.Desktop">
+    </bean>
+
+<!--    <bean id="laptop" class="com.spring.framework.model.Laptop">-->
+<!--    </bean>-->
+
+    <bean id="computer" class="com.spring.framework.model.Laptop"/>
+
+</beans>
+
