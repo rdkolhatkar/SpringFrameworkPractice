@@ -45,13 +45,29 @@ and that the character encoding used inside is UTF-8.
 <!--        <property name="timeScale" value="42"/>-->
 <!--    </bean>-->
 
-    <bean id="desktop" class="com.spring.framework.model.Desktop">
+    <bean id="desktop" class="com.spring.framework.model.Desktop" primary="true"> <!-- If there is any confusion in which if Spring is not able to decide which bean it has to choose then in that case first priority will go to bean which has {primary="true"} -->
     </bean>
 
 <!--    <bean id="laptop" class="com.spring.framework.model.Laptop">-->
 <!--    </bean>-->
 
-    <bean id="computer" class="com.spring.framework.model.Laptop"/>
+    <!-- Now we have a use case where we don't want this Laptop bean (object) to be created when spring container is initialized, we only want this object to be created when we call the Laptop class for the first time
+    For this scenario we have to use {lazy-init="true"} -->
+    <!-- When we have a non-lazy bean which depends on the lazy bean then in that case Object of the lazy bean will get created even if the bean is not called for the first time or there is no bean creation in syntax written in Base code -->
+    <bean id="computer" class="com.spring.framework.model.Laptop" lazy-init="true"/>
+
+    <!-- Right now this Laptop bean is global, that means any reference class can call this but now we have to make it's scope restricted to a certain class like in our case Developer
+    Then in that case we can use the below syntax -->
+
+<!--        <bean id="developer" class="com.spring.framework.model.Developer" autowire="byType">-->
+<!--            <property name="age" value="27"/>-->
+<!--            <property name="duration" value="60"/>-->
+<!--            <property name="computer">-->
+<!--                <bean id="computer" class="com.spring.framework.model.Laptop" lazy-init="true"/> &lt;!&ndash; Here we are defining the bean inside the constructor property called computer to make our bean restricted to Developer class this is called as inner bean&ndash;&gt;-->
+<!--            </property>-->
+<!--            <property name="timevalue" value="21"/>-->
+<!--            <property name="timeScale" value="42"/>-->
+<!--        </bean>-->
 
 </beans>
 
