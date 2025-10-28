@@ -10,7 +10,9 @@ public class Engine {
         // If we have to interact with Spring Container through XML then we will use the {ApplicationContext context = new ClassPathXmlApplicationContext("SpringApplicationContext.xml")} this syntax
         // If we have to interact with Spring Container through Java based configuration then we will use the {ApplicationContext applicationContext = new AnnotationConfigApplicationContext(SpringApplicationConfig.class)} this syntax
         ApplicationContext applicationContext = new AnnotationConfigApplicationContext(SpringApplicationConfig.class);
-        Desktop desktop = applicationContext.getBean(Desktop.class);
+        Desktop desktop = applicationContext.getBean("Computer",Desktop.class);
         desktop.compile();
+        Desktop desktopOne = applicationContext.getBean("Machine",Desktop.class);
+        desktopOne.compile();
     }
 }
