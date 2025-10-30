@@ -7,12 +7,10 @@ import com.spring.framework.model.Developer;
 import com.spring.framework.model.Laptop;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Primary;
-import org.springframework.context.annotation.Scope;
+import org.springframework.context.annotation.*;
 
 @Configuration
+@ComponentScan("com.spring.framework") // @ComponentScan tells Spring where to look for classes annotated with @Component, @Service, @Repository, or @Controller so it can automatically detect and create their beans.
 public class SpringApplicationConfig {
 
     // By default our Method name is considered as the name of our bean unless we specify the bean name with @Bean annotation, Like in this case default bean name is "desktop"

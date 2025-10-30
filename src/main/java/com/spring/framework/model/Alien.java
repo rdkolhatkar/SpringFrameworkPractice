@@ -1,11 +1,15 @@
 package com.spring.framework.model;
 
-import java.beans.ConstructorProperties;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
+import java.beans.ConstructorProperties;
+@Component // This is the stereotype annotation
 public class Alien {
     public int age;
     private int duration;
     // Injecting Laptop Object inside Alien class
+    @Autowired
     private Laptop laptop;
     private int timevalue;
     private int timeScale;

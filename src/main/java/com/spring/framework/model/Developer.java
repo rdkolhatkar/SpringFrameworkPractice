@@ -1,11 +1,16 @@
 package com.spring.framework.model;
 
-import java.beans.ConstructorProperties;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
+import java.beans.ConstructorProperties;
+@Component // It is a Stereotype Annotation
 public class Developer {
     public int age;
     private int duration;
     // Injecting Laptop Object inside Alien class
+    // In Spring there are three types of Injections 1) Field Injection 2) Constructor Injection 3) Setter Injection
+    @Autowired
     private Computer computer;
     private int timevalue;
     private int timeScale;
@@ -17,7 +22,7 @@ public class Developer {
     public Developer(int age, int duration, Computer computer, int timevalue, int timeScale) {
         this.age = age;
         this.duration = duration;
-        this.computer = computer;
+        // this.computer = computer;
         this.timevalue = timevalue;
         this.timeScale = timeScale;
     }
@@ -35,6 +40,7 @@ public class Developer {
         return computer;
     }
 
+    @Autowired
     public void setComputer(Computer computer) {
         this.computer = computer;
     }
