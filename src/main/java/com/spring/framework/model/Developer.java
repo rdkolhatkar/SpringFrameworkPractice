@@ -1,6 +1,7 @@
 package com.spring.framework.model;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 import java.beans.ConstructorProperties;
@@ -12,6 +13,8 @@ public class Developer {
     // In Spring there are three types of Injections 1) Field Injection 2) Constructor Injection 3) Setter Injection
     @Autowired
     private Computer computer;
+
+    @Value("100") //@Value is used to inject values into Spring beans from properties files, environment variables, or expressions, allowing easy configuration of constants and externalized settings in the application.
     private int timevalue;
     private int timeScale;
 
