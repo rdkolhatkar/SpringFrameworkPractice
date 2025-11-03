@@ -3,6 +3,8 @@ package com.spring.framework;
 import com.spring.framework.config.SpringApplicationConfig;
 import com.spring.framework.model.Desktop;
 import com.spring.framework.model.Developer;
+import com.spring.framework.model.Laptop;
+import com.spring.framework.service.LaptopService;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
@@ -25,5 +27,9 @@ public class Engine {
         System.out.println(devP.getComputer());
         System.out.println(devP.getDuration());
         System.out.println(devP.age);
+
+        Laptop laptop = applicationContext.getBean(Laptop.class);
+        LaptopService laptopService = applicationContext.getBean(LaptopService.class);
+        laptopService.addLaptop(laptop);
     }
 }
