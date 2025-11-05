@@ -1,23 +1,81 @@
 plugins {
     id 'java'
+    id 'org.springframework.boot' version '3.3.5'
+    id 'io.spring.dependency-management' version '1.1.6'
 }
 
 group = 'org.ratnakar.practice'
 version = '1.0-SNAPSHOT'
+java.sourceCompatibility = JavaVersion.VERSION_17
 
 repositories {
     mavenCentral()
 }
 
-dependencies {
-    // Spring Framework Dependencies
-    implementation("org.springframework:spring-context:6.2.11") // Spring Core Dependency
+// ------------------------------
+// 🔧 Centralized Version Variables
+// ------------------------------
+ext {
+    springBootVersion = '3.3.5'
+    lombokVersion = '1.18.32'
+    junitVersion = '5.10.0'
+}
 
-    // Unit Testing Dependencies
-    testImplementation platform('org.junit:junit-bom:5.9.1')
-    testImplementation 'org.junit.jupiter:junit-jupiter'
+// ------------------------------
+// 🧩 Dependencies
+// ------------------------------
+dependencies {
+    implementation "org.springframework.boot:spring-boot-starter:${springBootVersion}"
+    compileOnly "org.projectlombok:lombok:${lombokVersion}"
+    annotationProcessor "org.projectlombok:lombok:${lombokVersion}"
+
+    testImplementation platform("org.junit:junit-bom:${junitVersion}")
+    testImplementation "org.junit.jupiter:junit-jupiter"
+    testImplementation "org.springframework.boot:spring-boot-starter-test:${springBootVersion}"
 }
 
 test {
     useJUnitPlatform()
+}
+
+// ------------------------------
+// 📂 Additional Source Set for 2nd App
+// ------------------------------
+sourceSets {
+    main {
+        java.srcDirs = ['src/main/java']
+        resources.srcDirs = ['src/main/resources']
+    }
+
+    code {
+        java.srcDirs = ['src/code/java']
+        resources.srcDirs = ['src/code/resources']
+        compileClasspath += sourceSets.main.output + configurations.runtimeClasspath
+        runtimeClasspath += output + compileClasspath
+    }
+
+    test {
+        java.srcDirs = ['src/test/java']
+        resources.srcDirs = ['src/test/resources']
+    }
+}
+
+// ------------------------------
+// ⚙️ Custom BootRun Tasks for Each App
+// ------------------------------
+
+// Run the main app (src/main/java)
+tasks.register('runMainApp', org.springframework.boot.gradle.tasks.run.BootRun) {
+    group = 'application'
+    description = 'Run the main Spring Boot app'
+    classpath = sourceSets.main.runtimeClasspath
+    mainClass.set('org.ratnakar.practice.MainApplication') // <-- update your actual class name
+}
+
+// Run the code app (src/code/java)
+tasks.register('runCodeApp', org.springframework.boot.gradle.tasks.run.BootRun) {
+    group = 'application'
+    description = 'Run the secondary Spring Boot app from src/code/java'
+    classpath = sourceSets.code.runtimeClasspath
+    mainClass.set('org.ratnakar.practice.CodeApplication') // <-- update your actual class name
 }
