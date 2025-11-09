@@ -21,5 +21,6 @@ public class SpringJdbcApplication {
         StudentService studentService = context.getBean(StudentService.class);
         studentService.addStudent(student);
         List<Student> students = studentService.getStudents();
+        System.out.println(studentService.getStudents());
     }
 }
