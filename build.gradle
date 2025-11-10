@@ -24,6 +24,8 @@ ext {
     springJdbcVersion = '6.2.10'
     springbootStarterDataJdbc = '3.5.5'
     postgreSqlDriver='42.7.7'
+    jakartaServerlet = '6.0.0'
+    tomcatEmbededCore = '11.0.10'
 }
 
 // ------------------------------
@@ -42,7 +44,9 @@ dependencies {
     implementation "org.springframework.boot:spring-boot-starter-data-jdbc"
     implementation "com.h2database:h2:${h2dbVersion}"
     implementation("org.postgresql:postgresql:${postgreSqlDriver}")
+    implementation("org.apache.tomcat.embed:tomcat-embed-core:${tomcatEmbededCore}")
     compileOnly "org.projectlombok:lombok:${lombokVersion}"
+    compileOnly("jakarta.servlet:jakarta.servlet-api:${jakartaServerlet}")
     annotationProcessor "org.projectlombok:lombok:${lombokVersion}"
 
     testImplementation platform("org.junit:junit-bom:${junitVersion}")
