@@ -77,6 +77,8 @@ sourceSets {
     test {
         java.srcDirs = ['src/test/java']
         resources.srcDirs = ['src/test/resources']
+        compileClasspath += sourceSets.main.output + configurations.runtimeClasspath
+        runtimeClasspath += output + compileClasspath
     }
 }
 
@@ -84,7 +86,7 @@ sourceSets {
 // ⚙️ Custom BootRun Tasks for Each App
 // ------------------------------
 
-// Run the main app (src/main/java)
+// Run the Spring Boot main app (src/main/java)
 tasks.register('runMainApp', org.springframework.boot.gradle.tasks.run.BootRun) {
     group = 'application'
     description = 'Run the main Spring Boot app'
@@ -92,10 +94,18 @@ tasks.register('runMainApp', org.springframework.boot.gradle.tasks.run.BootRun) 
     mainClass.set('org.ratnakar.practice.MainApplication') // <-- update your actual class name
 }
 
-// Run the code app (src/code/java)
+// Run the Spring Boot code app (src/code/java)
 tasks.register('runCodeApp', org.springframework.boot.gradle.tasks.run.BootRun) {
     group = 'application'
     description = 'Run the secondary Spring Boot app from src/code/java'
     classpath = sourceSets.code.runtimeClasspath
     mainClass.set('org.ratnakar.practice.CodeApplication') // <-- update your actual class name
+}
+
+// Run the Spring Boot app from src/test/java
+tasks.register('runTestApp', org.springframework.boot.gradle.tasks.run.BootRun) {
+    group = 'application'
+    description = 'Run the Spring Boot app from src/test/java'
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass.set('org.ratnakar.practice.TestApplication') // <-- replace with your test app's main class
 }
