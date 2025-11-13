@@ -52,6 +52,8 @@ dependencies {
     testImplementation platform("org.junit:junit-bom:${junitVersion}")
     testImplementation "org.junit.jupiter:junit-jupiter"
     testImplementation "org.springframework.boot:spring-boot-starter-test:${springBootVersion}"
+    testImplementation 'org.apache.tomcat.embed:tomcat-embed-core:10.1.24'
+    testImplementation 'jakarta.servlet:jakarta.servlet-api:6.0.0'
 }
 
 test {
@@ -107,5 +109,5 @@ tasks.register('runTestApp', org.springframework.boot.gradle.tasks.run.BootRun) 
     group = 'application'
     description = 'Run the Spring Boot app from src/test/java'
     classpath = sourceSets.test.runtimeClasspath
-    mainClass.set('org.ratnakar.practice.TestApplication') // <-- replace with your test app's main class
+    mainClass.set('com.practice.ratnakar.ServletApplication') // <-- replace with your test app's main class
 }
