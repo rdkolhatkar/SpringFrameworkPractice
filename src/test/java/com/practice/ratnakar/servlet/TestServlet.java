@@ -23,6 +23,7 @@ public class TestServlet extends HttpServlet {
         res.setContentType("text/html");
         // Sending response to the Web Client or Mobile Client
         PrintWriter out = res.getWriter(); // Writing some content on response object with getWriter() method
-        out.println("<h2><b>Hello World !</b></h2>"); // Writing our Message with HTML Tags for this we have to set the type of data for our web client in the response object
+        out.println("<h2><b>Hello World !</b></h2>");// Writing our Message with HTML Tags for this we have to set the type of data for our web client in the response object
+        res.getWriter().write("<h2><b>Hello World !</b></h2>");
     }
 }

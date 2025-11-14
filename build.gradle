@@ -25,7 +25,11 @@ ext {
     springbootStarterDataJdbc = '3.5.5'
     postgreSqlDriver='42.7.7'
     jakartaServerlet = '6.0.0'
-    tomcatEmbededCore = '11.0.10'
+    tomcatEmbededCore = '10.1.30'
+    springWeb = '7.0.0'
+    //tomcatVersion = '10.1.24'
+    servletApi = '6.0.0'
+    tomcatJasper = '10.1.30'
 }
 
 // ------------------------------
@@ -42,9 +46,13 @@ dependencies {
     implementation "org.springframework.boot:spring-boot-starter"
     implementation "org.springframework.boot:spring-boot-starter-jdbc"
     implementation "org.springframework.boot:spring-boot-starter-data-jdbc"
+    implementation "org.springframework.boot:spring-boot-starter-web"
+    implementation("org.apache.tomcat.embed:tomcat-embed-el:${tomcatEmbededCore}")
+    implementation("org.apache.tomcat.embed:tomcat-embed-websocket:${tomcatEmbededCore}")
     implementation "com.h2database:h2:${h2dbVersion}"
     implementation("org.postgresql:postgresql:${postgreSqlDriver}")
     implementation("org.apache.tomcat.embed:tomcat-embed-core:${tomcatEmbededCore}")
+    implementation("org.apache.tomcat:tomcat-jasper:${tomcatJasper}")
     compileOnly "org.projectlombok:lombok:${lombokVersion}"
     compileOnly("jakarta.servlet:jakarta.servlet-api:${jakartaServerlet}")
     annotationProcessor "org.projectlombok:lombok:${lombokVersion}"
@@ -52,8 +60,8 @@ dependencies {
     testImplementation platform("org.junit:junit-bom:${junitVersion}")
     testImplementation "org.junit.jupiter:junit-jupiter"
     testImplementation "org.springframework.boot:spring-boot-starter-test:${springBootVersion}"
-    testImplementation 'org.apache.tomcat.embed:tomcat-embed-core:10.1.24'
-    testImplementation 'jakarta.servlet:jakarta.servlet-api:6.0.0'
+    testImplementation "org.apache.tomcat.embed:tomcat-embed-core:${tomcatEmbededCore}"
+    testImplementation "jakarta.servlet:jakarta.servlet-api:${servletApi}"
 }
 
 test {
@@ -72,6 +80,13 @@ sourceSets {
     code {
         java.srcDirs = ['src/code/java']
         resources.srcDirs = ['src/code/resources']
+        compileClasspath += sourceSets.main.output + configurations.runtimeClasspath
+        runtimeClasspath += output + compileClasspath
+    }
+
+    app {
+        java.srcDirs = ['src/app/java']
+        resources.srcDirs = ['src/app/resources']
         compileClasspath += sourceSets.main.output + configurations.runtimeClasspath
         runtimeClasspath += output + compileClasspath
     }
@@ -110,4 +125,11 @@ tasks.register('runTestApp', org.springframework.boot.gradle.tasks.run.BootRun) 
     description = 'Run the Spring Boot app from src/test/java'
     classpath = sourceSets.test.runtimeClasspath
     mainClass.set('com.practice.ratnakar.ServletApplication') // <-- replace with your test app's main class
+}
+// Run the Spring Boot app from src/app/java
+tasks.register('runApp', org.springframework.boot.gradle.tasks.run.BootRun) {
+    group = 'application'
+    description = 'Run the Spring Boot app from src/app/java'
+    classpath = sourceSets.app.runtimeClasspath
+    mainClass.set('com.ratnakar.web.SpringWebApplication')   // <-- replace with actual main class
 }
