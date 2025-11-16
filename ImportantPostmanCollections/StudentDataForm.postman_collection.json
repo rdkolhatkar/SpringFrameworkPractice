@@ -1,0 +1,75 @@
+{
+	"info": {
+		"_postman_id": "44b390aa-46d6-4f91-b8f3-c84643713105",
+		"name": "StudentDataForm",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "19864596",
+		"_collection_link": "https://warped-equinox-530609.postman.co/workspace/291dac4f-80e4-4c02-8fe9-ca5282612efe/collection/19864596-44b390aa-46d6-4f91-b8f3-c84643713105?action=share&source=collection_link&creator=19864596"
+	},
+	"item": [
+		{
+			"name": "SubmitStudent",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "firstName",
+							"value": "Rahul",
+							"type": "text"
+						},
+						{
+							"key": "lastName",
+							"value": "Sharma",
+							"type": "text"
+						},
+						{
+							"key": "dob",
+							"value": "2000-05-10",
+							"type": "text"
+						},
+						{
+							"key": "address",
+							"value": "123 MG Road, Pune",
+							"type": "text"
+						},
+						{
+							"key": "email",
+							"value": "rahul.sharma@test.com",
+							"type": "text"
+						},
+						{
+							"key": "country",
+							"value": "India",
+							"type": "text"
+						},
+						{
+							"key": "state",
+							"value": "Maharashtra",
+							"type": "text"
+						},
+						{
+							"key": "postalCode",
+							"value": "411001",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/submit-student",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"submit-student"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

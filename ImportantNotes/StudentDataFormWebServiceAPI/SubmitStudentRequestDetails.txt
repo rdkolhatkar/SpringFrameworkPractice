@@ -1,0 +1,43 @@
+HTTP Request : POST
+APP_BASE_URL : http://localhost:8080/submit-student
+Request Body Type : x-www-form-urlencoded
+Request Body Parameters :
+| Key        | Value Example                         |
+| ---------- | ------------------------------------- |
+| firstName  | Rahul                                 |
+| lastName   | Sharma                                |
+| dob        | 2000-05-10                            |
+| address    | Pune                                  |
+| email      | [test@mail.com](mailto:test@mail.com) |
+| country    | India                                 |
+| state      | Maharashtra                           |
+| postalCode | 411001                                |
+
+Response Code : 200 OK
+Response Body Content-Type: text/html;charset=UTF-8
+Response Body :
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student Added Successfully</title>
+
+    <!-- Linking CSS -->
+    <link rel="stylesheet" type="text/css" href="/css/StudentSuccessStyle.css">
+</head>
+
+<body>
+
+<div class="success-container">
+    <h1>Student Added Successfully</h1>
+
+    <div class="details-card">
+        <p><strong>Student Name:</strong> Rahul Sharma</p>
+        <p><strong>Generated Student ID:</strong> 3</p>
+    </div>
+
+    <a href="/student-form" class="btn">Register Another Student</a>
+</div>
+
+</body>
+</html>

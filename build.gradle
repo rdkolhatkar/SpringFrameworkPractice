@@ -30,6 +30,7 @@ ext {
     //tomcatVersion = '10.1.24'
     servletApi = '6.0.0'
     tomcatJasper = '10.1.30'
+    mySqlConnector = '8.3.0'
 }
 
 // ------------------------------
@@ -49,10 +50,11 @@ dependencies {
     implementation "org.springframework.boot:spring-boot-starter-web"
     implementation("org.apache.tomcat.embed:tomcat-embed-el:${tomcatEmbededCore}")
     implementation("org.apache.tomcat.embed:tomcat-embed-websocket:${tomcatEmbededCore}")
-    implementation "com.h2database:h2:${h2dbVersion}"
+    //implementation "com.h2database:h2:${h2dbVersion}"
     implementation("org.postgresql:postgresql:${postgreSqlDriver}")
     implementation("org.apache.tomcat.embed:tomcat-embed-core:${tomcatEmbededCore}")
     implementation("org.apache.tomcat:tomcat-jasper:${tomcatJasper}")
+    implementation("com.mysql:mysql-connector-j:${mySqlConnector}")
     compileOnly "org.projectlombok:lombok:${lombokVersion}"
     compileOnly("jakarta.servlet:jakarta.servlet-api:${jakartaServerlet}")
     annotationProcessor "org.projectlombok:lombok:${lombokVersion}"
