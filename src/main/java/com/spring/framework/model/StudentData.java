@@ -12,6 +12,10 @@ public class StudentData {
 
     private String firstName;
     private String lastName;
+    /*
+    @DateTimeFormat is a Spring framework annotation used to tell Spring how to convert a date string (from HTML form or API request) into a Java Date/LocalDate object.
+    Spring cannot automatically guess the date format, so we manually tell it using this annotation.
+    */
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date dob;
     private String address;
