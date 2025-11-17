@@ -1,0 +1,22 @@
+HTTP Request : POST
+APP_BASE_URL : http://localhost:8080/employee/add
+Request Body Type : json
+Request Body :
+{
+  "employeeName": "John Doe",
+  "email": "john.doe@gmail.com",
+  "address": "221B Baker Street",
+  "phoneNumber": "9876543210",
+  "city": "Mumbai",
+  "state": "Maharashtra",
+  "country": "India",
+  "pinCode": "400001",
+  "dateOfBirth": "1995-10-20"
+}
+Response Code : 200 OK
+Response Body Content-Type: application/json
+Response Body :
+{
+    "message": "Employee Added Successfully",
+    "employeeId": "2"
+}

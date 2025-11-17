@@ -14,15 +14,19 @@ public class Employee {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;   // Auto-generated unique employee ID
 
+    @Column(name = "employee_name")
     private String employeeName;
     private String email;
     private String address;
+    @Column(name = "phone_number")
     private String phoneNumber;
     private String city;
     private String state;
     private String country;
+    @Column(name = "pin_code")
     private String pinCode;
 
     @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @Column(name = "date_of_birth")
     private LocalDate dateOfBirth;
 }

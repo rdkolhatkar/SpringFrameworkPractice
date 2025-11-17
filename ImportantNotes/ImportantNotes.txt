@@ -1,2 +1,5 @@
 Spring Framework Documentation: https://docs.spring.io/spring-framework/reference/index.html
------------------------------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------------------------
+Spring auto-configures Thymeleaf first and ignores JSP
+if you want to run the JSP project the comment or remove the thymeleaf dependency mentioned below from build.gradle
+(implementation "org.springframework.boot:spring-boot-starter-thymeleaf")

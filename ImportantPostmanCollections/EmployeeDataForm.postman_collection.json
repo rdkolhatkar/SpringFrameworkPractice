@@ -1,0 +1,40 @@
+{
+	"info": {
+		"_postman_id": "31e4f0cd-e82f-4c20-82b2-8f65c484530e",
+		"name": "EmployeeDataForm",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "19864596",
+		"_collection_link": "https://warped-equinox-530609.postman.co/workspace/API_Automation_Testing~291dac4f-80e4-4c02-8fe9-ca5282612efe/collection/19864596-31e4f0cd-e82f-4c20-82b2-8f65c484530e?action=share&source=collection_link&creator=19864596"
+	},
+	"item": [
+		{
+			"name": "RegisterEmployee",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"employeeName\": \"John Doe\",\r\n  \"email\": \"john.doe@gmail.com\",\r\n  \"address\": \"221B Baker Street\",\r\n  \"phoneNumber\": \"9876543210\",\r\n  \"city\": \"Mumbai\",\r\n  \"state\": \"Maharashtra\",\r\n  \"country\": \"India\",\r\n  \"pinCode\": \"400001\",\r\n  \"dateOfBirth\": \"1995-10-20\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/employee/add",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"employee",
+						"add"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
