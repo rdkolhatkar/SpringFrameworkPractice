@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Employee Registration Success</title>
+
+    <style>
+        body {
+            background: #eaf2ff;
+            font-family: Arial, sans-serif;
+        }
+
+        .success-box {
+            width: 40%;
+            margin: 80px auto;
+            background: #ffffff;
+            padding: 30px;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 0 14px rgba(0, 0, 150, 0.15);
+        }
+
+        h2 {
+            color: #1c5dc4;
+            margin-bottom: 10px;
+        }
+
+        .message {
+            color: #0c7a1c;
+            font-size: 18px;
+            margin-bottom: 20px;
+            font-weight: bold;
+        }
+
+        .info {
+            font-size: 17px;
+            color: #333;
+            margin: 5px 0;
+        }
+
+        .btn-back {
+            background: #1a73e8;
+            color: white;
+            padding: 10px 18px;
+            border: none;
+            font-size: 15px;
+            border-radius: 6px;
+            text-decoration: none;
+        }
+
+        .btn-back:hover {
+            background: #145cba;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="success-box">
+
+    <h2>Registration Successful</h2>
+
+    <p class="message" th:text="${message}"></p>
+
+    <p class="info">Employee Name: <span th:text="${employeeName}"></span></p>
+    <p class="info">Employee ID: <span th:text="${employeeId}"></span></p>
+
+    <br>
+    <a class="btn-back" href="/employee/register">Register Another Employee</a>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Employee Registration</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f2f6ff;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            width: 50%;
+            margin: 40px auto;
+            background: #ffffff;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0px 0px 12px rgba(0, 0, 150, 0.15);
+        }
+
+        h2 {
+            text-align: center;
+            color: #1a3f7a;
+            margin-bottom: 20px;
+        }
+
+        label {
+            font-weight: bold;
+            color: #333;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 10px;
+            margin-top: 6px;
+            margin-bottom: 15px;
+            border: 1px solid #a7b8d8;
+            border-radius: 6px;
+            font-size: 15px;
+        }
+
+        input:focus, select:focus {
+            outline: none;
+            border-color: #1a73e8;
+            box-shadow: 0 0 5px rgba(26, 115, 232, 0.3);
+        }
+
+        .btn-submit {
+            width: 100%;
+            background: #1a73e8;
+            color: #fff;
+            padding: 12px;
+            border: none;
+            font-size: 16px;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+
+        .btn-submit:hover {
+            background: #1559b6;
+        }
+
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+    <h2>Employee Registration Form</h2>
+
+    <form th:action="@{/employee/add}" th:object="${employee}" method="post">
+
+        <label>Employee Name</label>
+        <input type="text" th:field="*{employeeName}" required />
+
+        <label>Email</label>
+        <input type="email" th:field="*{email}" required />
+
+        <label>Address</label>
+        <input type="text" th:field="*{address}" required />
+
+        <label>Phone Number</label>
+        <input type="text" th:field="*{phoneNumber}" required />
+
+        <label>City</label>
+        <input type="text" th:field="*{city}" required />
+
+        <label>State</label>
+        <input type="text" th:field="*{state}" required />
+
+        <label>Country</label>
+        <input type="text" th:field="*{country}" required />
+
+        <label>Pin Code</label>
+        <input type="text" th:field="*{pinCode}" required />
+
+        <label>Date of Birth</label>
+        <input type="date" th:field="*{dateOfBirth}" required />
+
+        <button class="btn-submit" type="submit">Register Employee</button>
+
+    </form>
+</div>
+
+</body>
+</html>

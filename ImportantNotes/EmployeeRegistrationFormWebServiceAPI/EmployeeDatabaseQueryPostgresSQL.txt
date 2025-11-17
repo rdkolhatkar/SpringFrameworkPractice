@@ -1,0 +1,18 @@
+CREATE SCHEMA employeedata;
+
+SET search_path TO employeedata;
+
+CREATE TABLE employee_details (
+    id SERIAL PRIMARY KEY,
+    employee_name VARCHAR(100),
+    email VARCHAR(100),
+    address VARCHAR(255),
+    phone_number VARCHAR(20),
+    city VARCHAR(50),
+    state VARCHAR(50),
+    country VARCHAR(50),
+    pin_code VARCHAR(10),
+    date_of_birth DATE
+);
+
+SELECT * FROM employeedata.employee_details;
