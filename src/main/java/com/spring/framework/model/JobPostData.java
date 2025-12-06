@@ -50,7 +50,7 @@ public class JobPostData {
     private String postDescription;
 
     // Required experience for the job position
-    private int requiredExperiance;
+    private int requiredExperience;
 
     // List of technologies required for the job (e.g., ["Java", "Spring Boot"])
     private List<String> postTechStack;
