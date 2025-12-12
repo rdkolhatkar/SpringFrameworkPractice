@@ -46,6 +46,7 @@ dependencies {
     implementation 'org.glassfish.web:jakarta.servlet.jsp.jstl:2.0.0'
 
     // Lombok
+    implementation "org.projectlombok:lombok:${lombokVersion}"
     compileOnly "org.projectlombok:lombok:${lombokVersion}"
     annotationProcessor "org.projectlombok:lombok:${lombokVersion}"
 
