@@ -9,7 +9,7 @@ import java.util.Collections;
 import java.util.List;
 
 @Repository
-public class JobAppRepository {
+public class JobCodeRepository {
     List<JobPostData> jobsList = new ArrayList<>(Arrays.asList(
 
             // 1 → singletonList
@@ -110,4 +110,14 @@ public class JobAppRepository {
         jobsList.add(jobPostData);
         System.out.println(jobsList);
     }
+
+    public JobPostData getJob(int postId){
+        for(JobPostData jobPostData : jobsList){
+            if(jobPostData.getPostId() == postId){
+                return jobPostData;
+            }
+        }
+        return null;
+    }
+
 }
