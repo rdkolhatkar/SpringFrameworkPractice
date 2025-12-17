@@ -2,7 +2,6 @@ package com.ratnakar.practice.controller;
 
 import com.ratnakar.practice.service.JobCodeApplicationService;
 import com.spring.framework.model.JobPostData;
-import com.spring.framework.service.JobApplicationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -20,7 +19,6 @@ import java.util.List;
 public class JobRestController {
     @Autowired
     JobCodeApplicationService jobApplicationService;
-
     @GetMapping("jobPosts")
     @ResponseBody
     public List<JobPostData> getAllJobs(){
@@ -29,5 +27,10 @@ public class JobRestController {
     @GetMapping("jobPost/{postId}")
     public JobPostData getJob(@PathVariable("postId") int postId){
         return jobApplicationService.getJob(postId);
+    }
+    @PostMapping("jobPosts/add")
+    public JobPostData addJob(@RequestBody JobPostData jobPostData){
+        jobApplicationService.addJob(jobPostData);
+        return jobApplicationService.getJob(jobPostData.getPostId());
     }
 }
