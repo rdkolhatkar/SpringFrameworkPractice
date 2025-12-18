@@ -120,4 +120,24 @@ public class JobCodeRepository {
         return null;
     }
 
+    public void updateJob(JobPostData jobPostData){
+        for(JobPostData jobPostDataOne :  jobsList){
+            if(jobPostDataOne.getPostId() == jobPostData.getPostId()){
+                jobPostDataOne.setPostProfile(jobPostData.getPostProfile());
+                jobPostDataOne.setPostDescription(jobPostData.getPostDescription());
+                jobPostDataOne.setPostTechStack(jobPostData.getPostTechStack());
+                jobPostDataOne.setRequiredExperience(jobPostData.getRequiredExperience());
+            }
+        }
+
+    }
+
+    public void deleteJob(int postId){
+        for(JobPostData jobPostData : jobsList){
+            if(jobPostData.getPostId() == postId){
+                jobsList.remove(jobPostData);
+            }
+        }
+    }
+
 }

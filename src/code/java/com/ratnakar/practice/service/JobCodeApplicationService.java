@@ -17,8 +17,13 @@ public class JobCodeApplicationService {
     public List<JobPostData> getAllJobs(){
         return jobAppRepository.getAllJobs();
     }
-
     public JobPostData getJob(int postId){
         return jobAppRepository.getJob(postId);
+    }
+    public void updateJob(JobPostData jobPostData){
+        jobAppRepository.updateJob(jobPostData);
+    }
+    public void deleteJob(int postId){
+        jobAppRepository.deleteJob(postId);
     }
 }
