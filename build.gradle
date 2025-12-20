@@ -35,6 +35,9 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-web'
     implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
 
+    // XML Support
+    implementation 'com.fasterxml.jackson.dataformat:jackson-dataformat-xml'
+
     // Databases
     implementation "org.postgresql:postgresql:${postgreSqlDriver}"
     implementation "com.mysql:mysql-connector-j:${mySqlConnector}"

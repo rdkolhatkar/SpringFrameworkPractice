@@ -1,0 +1,137 @@
+{
+	"info": {
+		"_postman_id": "488e6758-c051-4174-91cf-01fe4ae1e065",
+		"name": "JobApplication",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "19864596",
+		"_collection_link": "https://warped-equinox-530609.postman.co/workspace/API_Automation_Testing~291dac4f-80e4-4c02-8fe9-ca5282612efe/collection/19864596-488e6758-c051-4174-91cf-01fe4ae1e065?action=share&source=collection_link&creator=19864596"
+	},
+	"item": [
+		{
+			"name": "GetAllJobs",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {}
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/xml",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/jobPosts",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"jobPosts"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetJobById",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/jobPost/2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"jobPost",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "addJobJSON",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"postId\": 11,\r\n    \"postProfile\": \"Android Developer\",\r\n    \"postDescription\": \"Must have strong knowledge of Android SDK, Kotlin/Java, mobile app architecture, and REST API integration\",\r\n    \"requiredExperience\": 3,\r\n    \"postTechStack\": [\r\n        \"Android\",\r\n        \"Kotlin\",\r\n        \"Java\",\r\n        \"Android SDK\",\r\n        \"REST APIs\"\r\n    ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/jobPosts/add",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"jobPosts",
+						"add"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "updateJob",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "  {\r\n        \"postId\": 1,\r\n        \"postProfile\": \"Python Developer\",\r\n        \"postDescription\": \"Must have strong knowledge of Pandas, OOPs and SDLC\",\r\n        \"requiredExperience\": 3,\r\n        \"postTechStack\": [\r\n            \"Python\"\r\n        ]\r\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/jobPosts",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"jobPosts"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "deleteJob",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/jobPosts/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"jobPosts",
+						"1"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

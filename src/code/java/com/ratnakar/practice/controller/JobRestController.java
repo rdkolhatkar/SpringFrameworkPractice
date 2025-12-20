@@ -19,16 +19,22 @@ import java.util.List;
 public class JobRestController {
     @Autowired
     JobCodeApplicationService jobApplicationService;
-    @GetMapping("jobPosts")
+    @GetMapping(path="jobPosts", produces = {"application/json"}) //By writing the "produces" keyword we are specifying that this @GetMapping method will only produce the json response data
     @ResponseBody
     public List<JobPostData> getAllJobs(){
         return jobApplicationService.getAllJobs();
-    }
+    } // This method will only return the json response
     @GetMapping("jobPost/{postId}")
     public JobPostData getJob(@PathVariable("postId") int postId){
         return jobApplicationService.getJob(postId);
     }
-    @PostMapping("jobPosts/add")
+
+    /*
+    consumes defines the media types that a Spring controller method can accept in the request body.
+    If the client sends a request with a Content-Type not listed in consumes, Spring returns 415 Unsupported Media Type.
+    It helps Spring choose the correct HttpMessageConverter and enforces a strict API contract.
+    */
+    @PostMapping(path="jobPosts/add", consumes = {"application/xml","application/json"}) // In this case our @PostMapping will accept only XML and JSON request Body
     public JobPostData addJob(@RequestBody JobPostData jobPostData){
         jobApplicationService.addJob(jobPostData);
         return jobApplicationService.getJob(jobPostData.getPostId());
