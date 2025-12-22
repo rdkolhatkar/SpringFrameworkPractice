@@ -8,6 +8,7 @@ import org.springframework.context.ApplicationContext;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Optional;
 
 @SpringBootApplication
 public class SpringDataApplicationRepoMain {
@@ -48,6 +49,17 @@ public class SpringDataApplicationRepoMain {
         s3.setPostalCode("380015");
         // Saving the data in DB
         repo.save(s1);
+        repo.save(s2);
+        repo.save(s3);
+        // Fetch all records from DB
+        System.out.println(repo.findAll());
+        // Fetch a specific data from DB
+        System.out.println(repo.findById(101)); // findById() this method will return the row from the DB based on the primary key and data will be in the List format
+        // As the return type of this findById() method is Optional class, we have to store the data in the OptionalObject with StudentsData type
+        Optional<StudentsData> opt = repo.findById(101);
+        System.out.println(opt.orElse(new StudentsData()));
+        System.out.println("********************");
+        System.out.println(repo.findByFirstAndLastName("Rahul", "Shetty"));
 
 
     }

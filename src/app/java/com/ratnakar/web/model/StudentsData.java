@@ -59,4 +59,19 @@ public class StudentsData {
 
     public String getPostalCode() { return postalCode; }
     public void setPostalCode(String postalCode) { this.postalCode = postalCode; }
+
+    @Override
+    public String toString() {
+        return "StudentsData{" +
+                "id=" + id +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", dob=" + dob +
+                ", address='" + address + '\'' +
+                ", email='" + email + '\'' +
+                ", country='" + country + '\'' +
+                ", state='" + state + '\'' +
+                ", postalCode='" + postalCode + '\'' +
+                '}';
+    }
 }
