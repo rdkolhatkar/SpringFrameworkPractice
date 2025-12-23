@@ -37,7 +37,8 @@ public class SpringDataApplicationRepoMain {
         s2.setCountry("India");
         s2.setDob(sdf.parse("1996-03-15"));
         s2.setState("Karnataka");
-        s2.setPostalCode("560038");
+        //s2.setPostalCode("560038");
+        s2.setPostalCode("560039");
         // Student 3
         s3.setId(103);
         s3.setFirstName("Vikram");
@@ -49,7 +50,7 @@ public class SpringDataApplicationRepoMain {
         s3.setPostalCode("380015");
         // Saving the data in DB
         repo.save(s1);
-        repo.save(s2);
+        //repo.save(s2);
         repo.save(s3);
         // Fetch all records from DB
         System.out.println(repo.findAll());
@@ -60,6 +61,10 @@ public class SpringDataApplicationRepoMain {
         System.out.println(opt.orElse(new StudentsData()));
         System.out.println("********************");
         System.out.println(repo.findByFirstAndLastName("Rahul", "Shetty"));
+        // Update Student
+        repo.save(s2);
+        // Delete Student
+        repo.delete(s1);
 
 
     }
