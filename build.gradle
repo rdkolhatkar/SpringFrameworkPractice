@@ -23,6 +23,47 @@ ext {
     jakartaServletJspApi = '3.1.1'
 }
 
+configurations {
+    codeCompileOnly.extendsFrom compileOnly
+    codeAnnotationProcessor.extendsFrom annotationProcessor
+
+    appCompileOnly.extendsFrom compileOnly
+    appAnnotationProcessor.extendsFrom annotationProcessor
+}
+
+
+// ------------------------------
+// 📂 Additional Source Sets for 2nd App
+// ------------------------------
+sourceSets {
+    main {
+        java.srcDirs = ['src/main/java']
+        resources.srcDirs = ['src/main/resources']
+    }
+
+    code {
+        java.srcDirs = ['src/code/java']
+        resources.srcDirs = ['src/code/resources']
+        compileClasspath += sourceSets.main.output + configurations.runtimeClasspath
+        runtimeClasspath += output + compileClasspath
+    }
+
+    app {
+        java.srcDirs = ['src/app/java']
+        resources.srcDirs = ['src/app/resources']
+        compileClasspath += sourceSets.main.output + configurations.runtimeClasspath
+        runtimeClasspath += output + compileClasspath
+    }
+
+    test {
+        java.srcDirs = ['src/test/java']
+        resources.srcDirs = ['src/test/resources']
+        compileClasspath += sourceSets.main.output + configurations.runtimeClasspath
+        runtimeClasspath += output + compileClasspath
+    }
+}
+
+
 // ------------------------------
 // 🧩 Dependencies
 // ------------------------------
@@ -64,37 +105,6 @@ dependencies {
 
 test {
     useJUnitPlatform()
-}
-
-// ------------------------------
-// 📂 Additional Source Sets for 2nd App
-// ------------------------------
-sourceSets {
-    main {
-        java.srcDirs = ['src/main/java']
-        resources.srcDirs = ['src/main/resources']
-    }
-
-    code {
-        java.srcDirs = ['src/code/java']
-        resources.srcDirs = ['src/code/resources']
-        compileClasspath += sourceSets.main.output + configurations.runtimeClasspath
-        runtimeClasspath += output + compileClasspath
-    }
-
-    app {
-        java.srcDirs = ['src/app/java']
-        resources.srcDirs = ['src/app/resources']
-        compileClasspath += sourceSets.main.output + configurations.runtimeClasspath
-        runtimeClasspath += output + compileClasspath
-    }
-
-    test {
-        java.srcDirs = ['src/test/java']
-        resources.srcDirs = ['src/test/resources']
-        compileClasspath += sourceSets.main.output + configurations.runtimeClasspath
-        runtimeClasspath += output + compileClasspath
-    }
 }
 
 // ------------------------------

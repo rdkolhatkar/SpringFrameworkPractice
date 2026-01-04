@@ -1,0 +1,25 @@
+-- Create database for products
+CREATE DATABASE products_db;
+-- Create a schema named 'product_schema'
+CREATE SCHEMA product_schema;
+-- Create Table product
+CREATE TABLE product_schema.product (
+    id BIGSERIAL PRIMARY KEY,
+    name VARCHAR(255) NOT NULL,
+    description TEXT,
+    brand VARCHAR(255),
+    price NUMERIC(10,2),
+    category VARCHAR(255),
+    release_date DATE,
+    product_available BOOLEAN,
+    stock_quantity INT,
+    image_name VARCHAR(255),
+    image_type VARCHAR(100),
+    image_data BYTEA
+);
+
+SELECT table_schema, table_name
+FROM information_schema.tables
+WHERE table_schema = 'product_schema';
+
+SELECT * FROM product_schema.product;
