@@ -1,0 +1,13 @@
+1) What is IOC in Spring Boot? or What is AutoWiring? or What is dependency injection?
+Answer:
+In Spring Boot IOC stands for Inversion of Control which means that Spring can create objects in the form of Beans.
+With IOC there is no need to manually create object using new Keyword. It creates bean in IOC container.
+These beans can be injected into field of a class using '@Autowired' annotation
+----------------------------------------------------------------------------------------------------------------------------------------------------------------
+2) What is Spring AOP (Aspect Oriented Programming)? Why Do We Need AOP?
+Answer:
+Spring AOP is used to separate cross-cutting concerns like logging, security, and transactions from business logic.
+It improves code readability, reduces duplication, and makes applications easier to maintain.
+AOP works using proxies and intercepts method execution at runtime.
+It complements OOP and does not replace it.
+----------------------------------------------------------------------------------------------------------------------------------------------------------------
