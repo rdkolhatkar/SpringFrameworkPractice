@@ -11,3 +11,20 @@ It improves code readability, reduces duplication, and makes applications easier
 AOP works using proxies and intercepts method execution at runtime.
 It complements OOP and does not replace it.
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------
+3) What is the difference between @RestController and @Controller Annotation in the Spring Boot
+Answer:
+| Feature               | @Controller                               | @RestController                        |
+| --------------------- | ----------------------------------------- | -------------------------------------- |
+| Purpose               | Used for traditional MVC web applications | Used for building RESTful web services |
+| Main Use Case         | Returns UI views (HTML, JSP, Thymeleaf)   | Returns data (JSON / XML)              |
+| Return Type           | View name or data                         | Data only                              |
+| @ResponseBody         | Must be added explicitly on methods       | Implicitly applied to all methods      |
+| View Resolver         | Used to resolve view names                | Not used                               |
+| Response Format       | HTML (by default)                         | JSON / XML (by default)                |
+| Serialization         | Manual (when @ResponseBody is used)       | Automatic using Jackson                |
+| Client Type           | Browser-based UI                          | Frontend apps, Mobile apps, APIs       |
+| Typical Project Layer | Presentation / UI layer                   | API / Service layer                    |
+| Combination           | Standalone annotation                     | @Controller + @ResponseBody            |
+| Best Suited For       | Server-side rendered applications         | Microservices & REST APIs              |
+| Common Example        | Login page, Dashboard                     | User API, Order API                    |
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------
