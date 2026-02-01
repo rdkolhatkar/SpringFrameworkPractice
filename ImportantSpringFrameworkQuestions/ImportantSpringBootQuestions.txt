@@ -28,3 +28,49 @@ Answer:
 | Best Suited For       | Server-side rendered applications         | Microservices & REST APIs              |
 | Common Example        | Login page, Dashboard                     | User API, Order API                    |
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------
+4) Explain Spring Boot Annotations @RestController, @Repository, @Service and @Component including their similarities and differences in tabular format
+Answer:
+@RestController, @Repository, @Service These three annotations are aliases of @Component annotation.
+What does Alias of @Component mean?
+In Spring, @Component is the base stereotype annotation that marks a class as a Spring-managed bean.
+@Controller / @RestController, @Service, and @Repository are specialized aliases of @Component, meaning:
+    -> Internally, they are meta-annotated with @Component
+    -> Spring treats them as beans automatically
+    -> They add extra semantic meaning and behavior based on application layer
+Alias here means:
+    -> A specialized name built on top of @Component that provides additional purpose, readability, and framework features without changing core bean behavior.
+I) @RestController/@Controller => Are the aliases of @Component. Their additional feature is that they handle HTTP requests.
+II) @Service is an alias of @Component. However, there is no additional feature associated with it. Hence we can replace @Service Annotation with @Component
+III) @Repository is an alias of @Component. It's additional feature is that it converts checked persistence exceptions into unchecked DataAccessException
+A) Similarities Table (Common Behavior)
+-----------------------------------------------------------------------------------------
+| Feature                        | @Component | @Service | @Repository | @RestController |
+| ------------------------------ | ---------- | -------- | ----------- | --------------- |
+| Spring Bean                    | ✅         | ✅       | ✅          | ✅              |
+| Managed by IoC                 | ✅         | ✅       | ✅          | ✅              |
+| Dependency Injection           | ✅         | ✅       | ✅          | ✅              |
+| Component Scanning             | ✅         | ✅       | ✅          | ✅              |
+| Singleton by default           | ✅         | ✅       | ✅          | ✅              |
+| Part of stereotype annotations | ✅         | ✅       | ✅          | ✅              |
+-------------------------------------------------------------------------------------------
+B) Differences Table (Beginner-Friendly)
+--------------------------------------------------------------------------
+| Annotation      | Layer      | Purpose        | Typical Use             |
+| --------------- | ---------- | -------------- | ----------------------- |
+| @Component      | Any        | Generic bean   | Utility, helper classes |
+| @Service        | Service    | Business logic | Calculations, workflows |
+| @Repository     | DAO        | DB access      | CRUD operations         |
+| @RestController | Controller | REST APIs      | JSON/XML responses      |
+---------------------------------------------------------------------------
+C) Differences Table (Advanced / Interview-Level)
+------------------------------------------------------------------------------------------------------
+| Feature               | @Component | @Service       | @Repository       | @RestController           |
+| --------------------- | ---------- | -------------- | ----------------- | ------------------------- |
+| Semantic meaning      | Generic    | Business logic | Persistence logic | Web/API layer             |
+| Exception Translation | ❌          | ❌              | ✅                 | ❌                     |
+| Transaction support   | ❌          | ✅ (Best place) | ❌                 | ❌                     |
+| Returns View          | ❌          | ❌              | ❌                 | ❌                     |
+| Returns JSON/XML      | ❌          | ❌              | ❌                 | ✅                     |
+| AOP suitability       | Medium      | High            | Medium              | Low                    |
+| Combines annotations  | ❌          | ❌              | ❌                 | Controller+ResponseBody |
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
