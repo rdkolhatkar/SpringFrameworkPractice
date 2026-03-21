@@ -120,12 +120,20 @@ Dispatcher Servlet is the front controller. It receives all incoming HTTP reques
 | **Flow with Spring MVC**        | Client → DispatcherServlet → HandlerMapping → Controller → ModelAndView → ViewResolver → View → Response to Client                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
 | **Configuration**               | Usually configured automatically with `@SpringBootApplication` in Spring Boot.<br>In XML-based Spring MVC, it’s defined in `web.xml`.                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-What is Spring Boot Actuator?
+9) What is Spring Boot Actuator?
 Answer:
 -> It is used for monitoring application. It monitors health of application, checks, how many JVM threads are open, how much disk space is available, how many database instances are live and connected etc.
 -> It exposes certain production ready end points to monitor the application.
 -> Actuator can be added to the classpath as a dependency
 -> 'org.springframework.boot:spring-boot-starter-actuator' this dependency is used for configuring Spring Boot Actuator
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-
-
+10) What is a Global Exception Handler in Spring Boot, and why is it used?
+Answer:
+-> A Global Exception Handler in Spring Boot is a centralized mechanism to handle exceptions that occur across the entire application, instead of handling them individually in each controller.
+-> It is typically implemented using the "@ControllerAdvice" or "@RestControllerAdvice" annotation along with "@ExceptionHandler".
+-> '@ControllerAdvice' : Used to define a global exception handler that applies to all controllers and can return both views and responses.
+-> '@RestControllerAdvice' : A specialized version of @ControllerAdvice that automatically returns JSON/XML responses (combines @ControllerAdvice + @ResponseBody).
+-> '@ExceptionHandler' : Used to handle specific exceptions and define the logic for what response should be returned when that exception occurs.
+-> We use a Global Exception Handler to centralize exception handling, avoid repetitive try-catch blocks, and keep controller code clean and focused on business logic.
+   It ensures consistent API error responses and improves maintainability by managing all exception logic in one place.
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
