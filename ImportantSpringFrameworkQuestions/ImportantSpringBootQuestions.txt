@@ -137,3 +137,172 @@ Answer:
 -> We use a Global Exception Handler to centralize exception handling, avoid repetitive try-catch blocks, and keep controller code clean and focused on business logic.
    It ensures consistent API error responses and improves maintainability by managing all exception logic in one place.
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+11) QUESTION: What is Project Lombok in Spring Boot? Explain its purpose, key features, and why it is considered important in modern Java/Spring Boot development.
+Answer:
+
+WHAT IS LOMBOK?
+---------------
+Project Lombok is a Java annotation-based library that automatically generates
+boilerplate code at compile time. In Spring Boot projects, it is used to
+reduce the verbosity of Java classes by eliminating repetitive code such as
+getters, setters, constructors, equals/hashCode methods, and toString methods.
+
+Lombok integrates seamlessly with Spring Boot via a simple Maven or Gradle
+dependency, and works with most modern IDEs (IntelliJ IDEA, Eclipse, VS Code)
+through a plugin.
+
+Maven Dependency:
+-----------------
+<dependency>
+    <groupId>org.projectlombok</groupId>
+    <artifactId>lombok</artifactId>
+    <optional>true</optional>
+</dependency>
+
+
+KEY ANNOTATIONS AND THEIR FUNCTIONS:
+--------------------------------------
+
+1. @Getter / @Setter
+   Automatically generates getter and setter methods for all fields in a class.
+
+2. @NoArgsConstructor
+   Generates a no-argument (default) constructor.
+
+3. @AllArgsConstructor
+   Generates a constructor with parameters for all fields.
+
+4. @RequiredArgsConstructor
+   Generates a constructor only for fields marked as final or @NonNull.
+   Commonly used with Spring's constructor-based dependency injection.
+
+5. @ToString
+   Generates a toString() method that includes all (or selected) fields.
+
+6. @EqualsAndHashCode
+   Generates equals() and hashCode() methods based on class fields.
+
+7. @Data
+   A shortcut annotation that combines @Getter, @Setter, @ToString,
+   @EqualsAndHashCode, and @RequiredArgsConstructor into one.
+
+8. @Builder
+   Implements the Builder design pattern, allowing object creation using
+   a fluent API (e.g., User.builder().name("John").age(25).build()).
+
+9. @Slf4j / @Log4j2
+   Automatically injects a logger instance into the class, eliminating
+   the need to manually declare a Logger field.
+
+10. @Value
+    Makes a class immutable — all fields are made private and final,
+    and only getters are generated (no setters).
+
+
+EXAMPLE — Without Lombok:
+--------------------------
+public class User {
+    private Long id;
+    private String name;
+    private String email;
+
+    public User() {}
+
+    public User(Long id, String name, String email) {
+        this.id = id;
+        this.name = name;
+        this.email = email;
+    }
+
+    public Long getId() { return id; }
+    public void setId(Long id) { this.id = id; }
+    public String getName() { return name; }
+    public void setName(String name) { this.name = name; }
+    public String getEmail() { return email; }
+    public void setEmail(String email) { this.email = email; }
+
+    @Override
+    public String toString() {
+        return "User{id=" + id + ", name='" + name + "', email='" + email + "'}";
+    }
+}
+
+
+EXAMPLE — With Lombok:
+-----------------------
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.AllArgsConstructor;
+
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+public class User {
+    private Long id;
+    private String name;
+    private String email;
+}
+
+Both examples produce the exact same bytecode. Lombok generates everything
+behind the scenes at compile time.
+
+
+WHY IS LOMBOK IMPORTANT IN SPRING BOOT?
+-----------------------------------------
+
+1. Reduces Boilerplate Code:
+   Eliminates hundreds of lines of repetitive code, making classes cleaner
+   and easier to read.
+
+2. Improves Maintainability:
+   Fewer lines of code means fewer places for bugs to hide and less code
+   to update when fields change.
+
+3. Constructor Injection Support:
+   @RequiredArgsConstructor works perfectly with Spring's dependency injection,
+   removing the need to manually write @Autowired constructors.
+
+4. Cleaner Entity and DTO Classes:
+   JPA Entity classes and Data Transfer Objects (DTOs) in Spring Boot are
+   significantly simplified using @Data, @Builder, or @Value.
+
+5. Faster Development:
+   Developers can focus on business logic rather than writing repetitive
+   accessor and utility methods.
+
+6. Widely Adopted:
+   Lombok is a standard tool in the Spring Boot ecosystem and is supported
+   by Spring Initializr (start.spring.io) as a first-class dependency.
+
+
+COMMON USE CASE IN SPRING BOOT:
+---------------------------------
+
+@Entity
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
+public class Product {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    private String name;
+    private Double price;
+    private Integer quantity;
+}
+
+With just four annotations, this entity class has full getter/setter support,
+constructors, toString, equals/hashCode, and builder pattern — all generated
+automatically
+
+CONCLUSION:
+-----------
+Lombok is not a Spring Boot feature itself, but it is an essential companion
+library in the Spring Boot ecosystem. It promotes clean, readable, and
+maintainable code by handling all repetitive Java boilerplate automatically,
+allowing developers to write more expressive and concise code without
+sacrificing functionality.
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
