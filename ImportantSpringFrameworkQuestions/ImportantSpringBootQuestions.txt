@@ -306,3 +306,73 @@ maintainable code by handling all repetitive Java boilerplate automatically,
 allowing developers to write more expressive and concise code without
 sacrificing functionality.
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+12) What is Bean Scope? How long a Spring Bean lives? How many instances are created?
+Answer:
+Spring Bean Scope:
+-> Bean Scope defines the lifecycle, visibility, and number of instances of a Spring Bean within the application context.
+The 6 Bean Scopes in Spring are:
+-> 1) Singleton
+-> 2) Prototype
+-> 3) Request
+-> 4) Session
+-> 5) Application
+-> 6) WebSocket
+
+1) Singleton : Singleton bean scope means a single instance of the bean is created at the time of application startup and shared across the entire Spring Container.
+               Note: When we stop the Spring Boot Application, it will destroy all the Singleton beans and when we will restart the application then it will create the new Singleton bean with new hashcode
+2) Prototype: A new bean instance is created every time the bean is requested from the Spring container.
+3) Request: A new bean instance is created for each HTTP request and lives only for that request.
+4) Session: A single bean instance is created per user session and exists until the session ends.
+5) Application: A single bean instance is created for the entire web application and shared across all sessions.
+6) WebSocket: A single bean instance is created for each WebSocket connection and lives as long as that connection remains open.
+
+The default scope of each bean is Singleton. It includes all classes, objects and interfaces that are registered as beans (e.g., using @Component, @Service, @Repository, @Controller, or defined in configuration) are part of the Spring container scope.
+
+A) Eager Initialization: Bean is created and initialized at application startup.
+B) Lazy Initialization: Bean is created only when it is first requested/used.
+C) Constructor Initialization: Bean is initialized using its constructor.
+D) Setter Initialization: Bean is initialized using setter methods (dependency injection).
+E) PostConstruct Initialization: Custom logic runs after bean creation using @PostConstruct.
+F) InitializingBean / init-method: Custom initialization logic defined via afterPropertiesSet() or init-method.
+
+Type                          | Description                                           | When it Happens                   | Key Point
+------------------------------|-------------------------------------------------------|-----------------------------------|------------------------------
+Eager Initialization          | Bean is created and initialized at startup            | During application startup        | Faster access, slower startup
+Lazy Initialization           | Bean is created only when first requested             | On first use                      | Faster startup, slight delay later
+Constructor Initialization    | Bean is initialized using its constructor             | At the time of bean creation      | Ensures mandatory dependencies
+Setter Initialization         | Bean is initialized using setter methods              | After bean creation               | Flexible, allows optional deps
+@PostConstruct Initialization | Custom logic runs after bean creation (@PostConstruct)| After dependency injection        | Used for setup logic
+InitializingBean / init-method| Custom init logic via afterPropertiesSet()/init-method| After properties are set          | Framework or XML-based init
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
